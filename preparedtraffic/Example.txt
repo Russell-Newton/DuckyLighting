@@ -1,0 +1,8 @@
+Each prepared traffic file contains strings of the following format:
+
+I 01ffffffffffff ...
+O 01ffffffffffff ...
+
+Where I indicates inbound data and O indicates outbound.
+The first byte is the report id for the indicated Packet.
+The trailing data is the data for the indicated Packet, and must be an even length.
