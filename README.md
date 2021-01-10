@@ -8,7 +8,6 @@
 ![Issues](https://img.shields.io/github/issues/Russell-Newton/DuckyLighting) \
 ![Contributions Welcome](https://img.shields.io/badge/contributions-welcome!-55bb77)
 
-
 Take control of your RGB Keyboard's lighting. Developed for the Ducky One2 RGB, expandable to others.
 
 ## Table of Contents
@@ -22,7 +21,7 @@ Take control of your RGB Keyboard's lighting. Developed for the Ducky One2 RGB, 
     * [Installing Dependencies](#installing-dependencies)
 * [Usage](#usage)
     * [Creating a Lighting Config](#creating-a-lighting-config)
-    * [Running the Program](#running-the-program)
+    * [Lighting Up Your Keyboard](#lighting-up-your-keyboard)
 * [Expansion](#expansion)
     * [How to Determine Packet Protocols](#how-to-determine-packet-protocols)
 * [Credits and Thanks](#credits-and-thanks)
@@ -58,14 +57,13 @@ keyboard or expose your computer to security vulnerabilities. Only use code that
 ***Use at your own risk!***
 
 ```python
-from frontend.ducky import DuckyOne2RGB
-from backend.utils import Color
-from frontend.lighting.lightingschemes import SolidColorScheme
-import configs.config as config
+from keyboards.ducky import DuckyOne2RGB
+from lighting import Color, SolidColorScheme
+import configs
 
 
-class MyConfig(config.Config):
-    @config.layer()
+class MyConfig(configs.Config):
+    @configs.layer()
     def solid_blue(self):
         """
         Creates a solid blue keyboard.
@@ -111,8 +109,8 @@ should work for Python 3.6 (and potentially older versions of Python 3).
 ### Installing Dependencies
 
 Most of the requirements can be installed with `pip`, but PyAudio (if you wish to use
-a [Spectrogram Scheme](frontend/lighting/spectrogenerator.py)) has to be installed with another tool like `pipwin`. An
-easy way to make sure you get all the dependencies correct is to run the following commands in a terminal.
+a [Spectrogram Scheme](lighting/spectrogenerator.py)) has to be installed with another tool like `pipwin`. An easy way
+to make sure you get all the dependencies correct is to run the following commands in a terminal.
 
 ```shell
 pip install pipwin
@@ -129,11 +127,50 @@ This set of commands has worked for me.
 
 ### Creating a Lighting Config
 
-`temporary filler, I would rather have this be through a Wiki`
+Creating a Config with DuckyLighting resembles using the bot commands framework
+from [discord.py](https://discordpy.readthedocs.io/en/latest/ext/commands) to create
+a [Cog](https://discordpy.readthedocs.io/en/latest/ext/commands/cogs.html). Organizing layers on top of layers can be
+done with `RGBKeyboard::add_layer()`, but having each layer defined in its very own, tidy place can be incredibly handy.
 
-### Running the Program
+The gist:
 
-`temporary filler, I would rather have this be through a Wiki`
+* Each Config is a Python class that subclasses `configs.Config`.
+* Every layer getter is marked with the `configs.layer()` decorator. A layer getter takes no parameters and should
+  return some `LightingScheme`. Each layer is added in their getter declaration order, so order matters! The decorator
+  has room to take in a `CombineType` and a `Mask`, which determine how the layer is added on top of the other layers.
+  By default, a layer overlays its non-zero colors for all keys.
+* An RGBKeyboard is assigned a Config with `RGBKeyboard::set_config()`
+
+It's that easy!
+
+### Quick Example
+
+This example Config defines two layers: a solid white background with solid red WASD and arrow keys.
+
+```python
+import configs
+from lighting import SolidColorScheme, Color, Mask
+
+
+class ExampleConfig(configs.Config):
+    # This layer is added to the overall scheme first
+    @configs.layer()
+    def white_background(self):
+        return SolidColorScheme(Color(255, 255, 255))
+
+    # This layer is added second, but only for the keys in the Mask
+    @configs.layer(mask=Mask.WASD + Mask(["UpArrow", "DownArrow", "LeftArrow", "RightArrow"]))
+    def red_wasd_and_arrows(self):
+        return SolidColorScheme(Color(255, 0, 0))
+```
+
+### Lighting Up Your Keyboard
+
+Once you have your Config defined, all you need to do is tell your keyboard to set it as its config, using the `set_config()` method. Then you can start lighting up your keyboard with `run()`. 
+```python
+my_keyboard.set_config(ExampleConfig())
+my_keyboard.run()
+```
 
 ## Expansion
 
@@ -172,6 +209,7 @@ Similar analysis could be used to determine how to instruct other keyboards with
 | [![DuckyAPI](https://img.shields.io/badge/Jonathan%20Schramm%20(Latedi)-DuckyAPI-violet)](https://github.com/Latedi/DuckyAPI) | [![Latedi Github](https://img.shields.io/badge/GitHub-707090)](https://github.com/Latedi) |
 | [![libusb](https://img.shields.io/badge/libusb-hidapi-20bf00)](https://github.com/libusb/hidapi) | [![Latedi Github](https://img.shields.io/badge/GitHub-707090)](https://github.com/libusb) [![Latedi Github](https://img.shields.io/badge/Website-707090)](https://libusb.info)
 | [![python-easyhid](https://img.shields.io/badge/ahtn-easyhid-df9f00)](https://github.com/ahtn/python-easyhid) | [![Latedi Github](https://img.shields.io/badge/GitHub-707090)](https://github.com/ahtn)|
+
 ## Links
 
 In case none of the hyperlinks above work,
@@ -186,6 +224,8 @@ In case none of the hyperlinks above work,
 | python-easyhid | https://github.com/ahtn/python-easyhid |
 | Anaconda | https://www.anaconda.com |
 | Spectrogram Scheme | https://www.github.com/Russell-Newton/DuckyLighting/blob/main/frontend/lighting/spectrogenerator.py |
+| discord.py | https://discordpy.readthedocs.io/en/latest |
+| Cog | https://discordpy.readthedocs.io/en/latest/ext/commands/cogs.html |
 | WireShark | https://www.wireshark.org |
 | USBPcap | https://desowin.org/usbpcap/ |
 | Latedi found | https://github.com/Latedi/DuckyAPI#how-to |
