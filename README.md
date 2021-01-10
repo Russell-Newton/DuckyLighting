@@ -1,8 +1,13 @@
 # DuckyLighting for Windows
 
+![Built for Windows 10](https://img.shields.io/badge/Built%20for-Windows%2010-7fba00)
+![Nearly Pure-Python 3](https://img.shields.io/badge/Python%203-100%25-blueviolet)
+[![GPLv3 License](https://img.shields.io/github/license/Russell-Newton/DuckyLighting)](LICENSE) \
 ![Stars](https://img.shields.io/github/stars/Russell-Newton/DuckyLighting)
 ![Forks](https://img.shields.io/github/forks/Russell-Newton/DuckyLighting)
-![Issues](https://img.shields.io/github/issues/Russell-Newton/DuckyLighting)
+![Issues](https://img.shields.io/github/issues/Russell-Newton/DuckyLighting) \
+![Contributions Welcome](https://img.shields.io/badge/contributions-welcome!-55bb77)
+
 
 Take control of your RGB Keyboard's lighting. Developed for the Ducky One2 RGB, expandable to others.
 
@@ -24,9 +29,6 @@ Take control of your RGB Keyboard's lighting. Developed for the Ducky One2 RGB, 
 * [Links](#links)
 
 ## About
-
-![Built for Windows 10](https://img.shields.io/badge/Built%20for-Windows%2010-7fba00)
-![Nearly Pure-Python 3](https://img.shields.io/badge/Python%203-100%25-blueviolet)
 
 DuckyLighting is a (nearly) Pure-Python 3.8 solution to the problem of [Ducky](https://www.duckychannel.com.tw)'s
 RGBSeries software being lackluster at best. The software is useful but does not enable users to layer multiple effects.
@@ -82,8 +84,6 @@ configuration creates a flame effect, a blue reactive effect, and a purple starl
 and spacebar).
 
 ## License
-
-[![GPLv3 License](https://img.shields.io/github/license/Russell-Newton/DuckyLighting)](LICENSE)
 
 DuckyLighting is provided under the GNU General Public License, version 3.0. DuckyLighting is packaged
 with [HIDAPI](https://github.com/libusb/hidapi) binaries (under the terms of its GPL) and a modified version of
@@ -172,9 +172,6 @@ Similar analysis could be used to determine how to instruct other keyboards with
 | [![DuckyAPI](https://img.shields.io/badge/Jonathan%20Schramm%20(Latedi)-DuckyAPI-violet)](https://github.com/Latedi/DuckyAPI) | [![Latedi Github](https://img.shields.io/badge/GitHub-707090)](https://github.com/Latedi) |
 | [![libusb](https://img.shields.io/badge/libusb-hidapi-20bf00)](https://github.com/libusb/hidapi) | [![Latedi Github](https://img.shields.io/badge/GitHub-707090)](https://github.com/libusb) [![Latedi Github](https://img.shields.io/badge/Website-707090)](https://libusb.info)
 | [![python-easyhid](https://img.shields.io/badge/ahtn-easyhid-df9f00)](https://github.com/ahtn/python-easyhid) | [![Latedi Github](https://img.shields.io/badge/GitHub-707090)](https://github.com/ahtn)|
-
-![Contributions Welcom](https://img.shields.io/badge/contributions-welcome!-green)
-
 ## Links
 
 In case none of the hyperlinks above work,
