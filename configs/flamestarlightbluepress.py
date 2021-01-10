@@ -6,7 +6,7 @@ from frontend.lighting.lightingschemes import FunctionScheme, NoiseScheme, React
 import numpy as np
 
 
-class DefaultConfig(config.Config):
+class FSBPConfig(config.Config):
     def __init__(self):
         super().__init__()
         self.shape = np.shape(key_grid_by_col)

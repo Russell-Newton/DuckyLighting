@@ -1,0 +1,5 @@
+numpy==1.19.5
+noise==1.2.2
+cffi==1.14.4
+PyAudio==0.2.11
+keyboard==0.13.5
