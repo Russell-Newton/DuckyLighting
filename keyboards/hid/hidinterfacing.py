@@ -1,8 +1,8 @@
-from typing import List, Tuple, Dict, Optional, Iterable
+from typing import List, Tuple, Dict, Optional
 
 import logging
 
-from backend.easyhid import Enumeration, HIDDevice, HIDException
+from keyboards.hid import Enumeration, HIDDevice, HIDException
 
 
 class Packet:

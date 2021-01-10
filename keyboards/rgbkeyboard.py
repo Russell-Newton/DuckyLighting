@@ -1,16 +1,14 @@
 import asyncio
 import traceback
 
-from backend.hidinterfacing import HIDHandler, PacketSender, PacketStream
+from keyboards import HIDHandler, PacketSender, PacketStream
 from abc import ABC, abstractmethod
-from backend.utils import Color, Mask
+from lighting import Color, Mask, LightingScheme, CombiningScheme, CombineType, HookingScheme
+from configs import Config
 
 from typing import Dict, List, Callable, Optional
 import keyboard
 import logging
-
-from configs.config import Config
-from frontend.lighting.lightingschemes import LightingScheme, CombiningScheme, CombineType, HookingScheme
 
 
 class KeyData:

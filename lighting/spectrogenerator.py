@@ -4,7 +4,7 @@ import traceback
 import numpy as np
 import pyaudio
 
-from backend import utils
+from lighting import scale_map
 
 BUFFER_LENGTH = 2048
 SAMPLE_RATE = 44100
@@ -52,7 +52,7 @@ class SpectrogramGenerator(object):
     def __enter__(self):
         return self
 
-    def __exit__(self, exc_type, exc_value, traceback):
+    def __exit__(self, exc_type, exc_value, tb):
         self.__del__()
 
     def __del__(self):
@@ -126,4 +126,4 @@ class SpectrogramGenerator(object):
             The column maxes, mapped from [0, -MIN_DB] to [0, COL_HEIGHT]. The mapping function is the same as used for
             Arduinos.
         """
-        return [utils.scale_map(n, 0, MAP_IN_MIN, 0, self._col_height) for n in self._heights]
+        return [scale_map(n, 0, MAP_IN_MIN, 0, self._col_height) for n in self._heights]

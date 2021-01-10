@@ -1,7 +1,6 @@
-from backend.hidinterfacing import PacketStream, Packet
-from frontend.rgbkeyboard import RGBKeyboard, KeyColorManager, KeyData
+from keyboards import PacketStream, Packet, RGBKeyboard, KeyColorManager, KeyData
 from typing import List
-from backend.utils import Color
+from lighting import Color
 import asyncio
 
 DUCKY_ONE_2_VID = 0x04d9

@@ -31,8 +31,6 @@ special_keys = {
     "Right": ["RightAlt", "RightControl", "RightEnter", "RightWindows", "RightArrow"]
 }
 
-key_count = len(key_codes) - 1
-
 # Separated by rows, (0, 0) is top left
 key_grid_by_row = [
     ["Escape", None, "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "PrintScreen",
@@ -58,7 +56,7 @@ class CombineType(Enum):
     """
     Used to determine how LightingSchemes are combined in a CombiningScheme.
     ::
-        Overlay: Completely overrides the existing Color with this one, unless this Color is 0.
+        Overlay: Completely overrides the existing Color with this one, unless this Color is zero.
         Add: Adds this Color onto the existing one.
         Subtract: Subtracts this Color from the existing one.
     """

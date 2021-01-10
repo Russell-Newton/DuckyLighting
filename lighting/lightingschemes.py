@@ -6,10 +6,9 @@ import keyboard
 import numpy as np
 from noise import snoise3
 
-from frontend.lighting.colorfunctions import ColorFunction, ReactiveFunction, combine_keys_and_functions, single_color
-from frontend.lighting.colorpalettes import NoisePalette, WordPalette
-from frontend.lighting.spectrogenerator import SpectrogramGenerator
-from backend.utils import key_grid_by_row, key_grid_by_col, Color, KeyIndex, scale_map, flatten, CombineType, Mask
+from lighting import ColorFunction, ReactiveFunction, combine_keys_and_functions, single_color, NoisePalette, \
+    WordPalette, SpectrogramGenerator, key_grid_by_row, key_grid_by_col, Color, KeyIndex, scale_map, flatten, \
+    CombineType, Mask
 
 
 class LightingScheme(ABC):

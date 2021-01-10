@@ -1,5 +1,4 @@
-from backend.utils import CombineType, Mask
-from frontend.lighting.lightingschemes import CombiningScheme
+from lighting import CombiningScheme, CombineType, Mask
 
 
 class Layer:

@@ -1,5 +1,5 @@
 # import hid
-from backend.easyhid.easyhid import Enumeration
+from keyboards import Enumeration
 
 DUCKY_ONE_2_VID = 0x04d9
 DUCKY_ONE_2_PID = 0x0348

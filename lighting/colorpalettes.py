@@ -3,9 +3,7 @@ from typing import Dict
 
 import numpy as np
 
-import frontend.lighting.letters as letters
-from frontend.lighting.colorfunctions import ColorFunction
-from backend.utils import Gradient, Color, KeyIndex
+from lighting import ColorFunction, letters, Gradient, Color, KeyIndex
 
 
 class NoisePalette:

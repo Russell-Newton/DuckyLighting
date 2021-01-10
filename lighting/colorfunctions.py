@@ -6,7 +6,7 @@ from typing import List, Callable, Union
 
 import keyboard
 
-from backend.utils import Color, Gradient, scale_map, key_codes, special_keys, Mask, KeyIndex
+from lighting import Color, Gradient, scale_map, key_codes, special_keys, Mask, KeyIndex
 
 
 class ColorFunction(ABC):

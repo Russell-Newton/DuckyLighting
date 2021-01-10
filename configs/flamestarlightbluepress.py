@@ -1,8 +1,6 @@
-import configs.config as config
-from backend.utils import key_grid_by_col, GradientKeyPoint, Color, Gradient, CombineType, Mask
-from frontend.lighting.colorfunctions import combine_keys_and_functions, column_gradient
-from frontend.lighting.colorpalettes import NoisePalette
-from frontend.lighting.lightingschemes import FunctionScheme, NoiseScheme, ReactiveScheme, SolidColorScheme
+import configs as config
+from lighting import key_grid_by_col, GradientKeyPoint, Color, Gradient, CombineType, Mask, combine_keys_and_functions, \
+    column_gradient, NoisePalette, FunctionScheme, NoiseScheme, ReactiveScheme, SolidColorScheme
 import numpy as np
 
 
