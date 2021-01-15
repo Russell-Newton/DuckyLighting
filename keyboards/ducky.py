@@ -13,6 +13,7 @@ class DuckyOne2RGBColorManager(KeyColorManager):
     """
     This KeyColorManager is specialized for the Ducky One2 RGB, 108-key US layout.
     """
+
     def _setup_keys(self):
         self.keys["Escape"] = KeyData(Color(0, 0, 0), 0, 0x08)
         self.keys["SectionSign"] = KeyData(Color(0, 0, 0), 0, 0x0b)
@@ -165,7 +166,6 @@ class DuckyOne2RGBColorManager(KeyColorManager):
         data_arrays: List[bytearray] = []
         packets: List[Packet] = []
 
-
         # ------------------------------------------ Apply packet metadata ------------------------------------------- #
         for i in range(8):
             data = bytearray(64)
@@ -194,18 +194,19 @@ class DuckyOne2RGBColorManager(KeyColorManager):
         # -------------------------------------------- Initialize packets -------------------------------------------- #
         for data in data_arrays:
             packets.append(Packet(True, data, 0x1))
-            packets.append(Packet(False, bytearray([0] * 64), 0x1))   # Allow for waiting for response
+            packets.append(Packet(False, bytearray([0] * 64), 0x1))  # Allow for waiting for response
 
         return PacketStream(packets=packets)
 
 
 class DuckyOne2RGB(RGBKeyboard):
-    def __init__(self):
+    def __init__(self, vid=DUCKY_ONE_2_VID, pid=DUCKY_ONE_2_PID, usage=DUCKY_ONE_2_USAGE,
+                 usage_page=DUCKY_ONE_2_USAGE_PAGE):
         """
         A DuckyOne2RGB is designed to communicate with a Ducky One2 RGB. By default, it makes use of the
         :class:`DuckyOne2RGBColorManager`.
         """
-        super().__init__(DUCKY_ONE_2_VID, DUCKY_ONE_2_PID, DUCKY_ONE_2_USAGE, DUCKY_ONE_2_USAGE_PAGE,
+        super().__init__(vid, pid, usage, usage_page,
                          initialize="preparedtraffic/DuckyOne2_Traffic_Init.txt",
                          exit="preparedtraffic/DuckyOne2_Traffic_Exit.txt")
         self.color_manager = DuckyOne2RGBColorManager()
@@ -218,5 +219,3 @@ class DuckyOne2RGB(RGBKeyboard):
     async def _close_connection(self):
         await super()._close_connection()
         await self.execute_packet_stream(self._prepared_traffic["exit"])
-
-
