@@ -49,7 +49,10 @@ const wchar_t* hid_error (hid_device *device);
 try:
     hidapi = ffi.dlopen('hidapi/hidapi.dll')
 except:
-    hidapi = ffi.dlopen(ctypes.util.find_library('hidapi.dll'))
+    try:
+        hidapi = ffi.dlopen('../hidapi/hidapi.dll')
+    except:
+        hidapi = ffi.dlopen(ctypes.util.find_library('hidapi.dll'))
 
 
 def _c_to_py_str(val):
