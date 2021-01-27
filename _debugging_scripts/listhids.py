@@ -7,11 +7,11 @@ except ModuleNotFoundError:
     print(sys.path)
     from keyboards import Enumeration
 
-DUCKY_ONE_2_VID = 0x04d9
-DUCKY_ONE_2_PID = 0x0348
+VID = 0x04d9
+PID = 0
 
 if __name__ == '__main__':
-    devices = Enumeration(vid=DUCKY_ONE_2_VID, pid=DUCKY_ONE_2_PID)
+    devices = Enumeration(vid=VID, pid=PID)
     for device in devices.find():
         device.open()
         info = f"Device: vid/pid: {device.vendor_id}/{device.product_id}\n" \
@@ -21,5 +21,5 @@ if __name__ == '__main__':
                f"  usage:         {device.usage}\n" \
                f"  Manufacturer:  {device.manufacturer_string}\n" \
                f"  Product:       {device.product_string}"
-        print(device, info)
+        print(info)
         device.close()

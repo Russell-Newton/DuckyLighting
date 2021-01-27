@@ -4,7 +4,7 @@ from lighting import Color
 import asyncio
 
 DUCKY_ONE_2_VID = 0x04d9
-DUCKY_ONE_2_PID = 0x0348
+DUCKY_ONE_2_PID = 0 # 0x0348
 DUCKY_ONE_2_USAGE_PAGE = 0xff00
 DUCKY_ONE_2_USAGE = 1
 

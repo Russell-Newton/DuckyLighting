@@ -119,10 +119,18 @@ class HIDHandler:
         self.device.close()
 
     def _setup(self) -> None:
-        self.device = \
+        devices = \
             Enumeration(vid=self.vendor_id,
                         pid=self.product_id).find(usage_page=self.usage_page,
-                                                  usage=self.usage)[0]
+                                                  usage=self.usage)
+
+        if len(devices) == 0:
+            raise ValueError(
+                "Could not find any devices with the declared VID, PID, Usage, and Usage Page!\n"
+                "Use \"_debugging_scripts\\listhids.py\" to locate the proper HID identification information.")
+
+        self.device = devices[0]
+
         self.device.open()
         self.device.set_nonblocking(True)
         # print(f"Device: vid/pid: {self.device.vendor_id}/{self.device.product_id}\n"
