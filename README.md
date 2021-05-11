@@ -8,7 +8,9 @@
 ![Issues](https://img.shields.io/github/issues/Russell-Newton/DuckyLighting) \
 ![Contributions Welcome](https://img.shields.io/badge/contributions-welcome!-55bb77)
 
-Take control of your RGB Keyboard's lighting. Developed for the Ducky One2 RGB, expandable to others.
+Take control of your RGB Keyboard's lighting. Developed for the Ducky One2 RGB, expandable to others (as long as they work with the default DuckyRGB software).
+
+**NOTE: DuckyRGB cannot be open when running this code - it will restrict connection to the keyboard. Connection to the keyboard must be maintained to enable DuckyLighting to work.**
 
 ## Table of Contents
 
